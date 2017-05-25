@@ -16,9 +16,9 @@ function minNumberInRotateArray(rotateArray){
     if(rotateArray.length===0){
         return 0;
     }
-    rotateArray.sort(function(){
-            return Math.random() - 0.5;
+    rotateArray.sort(function(a,b){
+            return a-b;
     });
-    return rotateArray;
+    return rotateArray[0];
 }
 console.log(minNumberInRotateArray([3,4,5,1,2]));
