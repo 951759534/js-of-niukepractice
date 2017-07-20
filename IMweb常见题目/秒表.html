@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+秒表:    <span id="clock">0</span>s  <button id="start">开始</button><button id="stop">暂停</button><button id="reset">复位</button>
+<script>
+    function Clock(){
+        this.time = 0.0;
+    }
+    Clock.prototype.init = function(){
+        this.clock = document.querySelector("#clock");
+        this.start = document.querySelector("#start");
+        this.stop = document.querySelector("#stop");
+        this.reset = document.querySelector("#reset");
+        this.start.addEventListener("click",()=>{
+            this.startClock();
+        });
+        this.stop.addEventListener("click",()=>{
+            this.stopClock();
+        })
+        this.reset.addEventListener("click",()=>{
+            this.resetClock();
+        })
+    }
+    Clock.prototype.startClock = function(){
+        this.timer = setInterval(()=>{
+          this.time += 1;
+          this.clock.innerHTML = this.time;
+        },1000)
+    }
+    Clock.prototype.stopClock = function(){
+        clearInterval(this.timer);
+    }
+    Clock.prototype.resetClock = function(){
+        this.time = 0;
+        this.clock.innerHTML = this.time;
+        this.stopClock();
+    }
+    var clock = new Clock();
+    clock.init();
+</script>
+</body>
+</html>

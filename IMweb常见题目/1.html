@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="container">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<script>
+    var container = document.getElementById("container");
+    var aLi = document.getElementsByTagName("li");
+    var str = "";
+    for(var i = aLi.length-1;i>=0;i--){
+        str += "<li>"+aLi[i].innerHTML+"</li>"
+    }
+    container.innerHTML = str;
+</script>
+</body>
+</html>
