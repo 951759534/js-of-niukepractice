@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+        function change(obj){
+            var flag = true;
+          var timer =  setInterval(function(){
+                for(var key in obj){
+                    if(flag){
+                        flag = false;
+                        obj[key] = obj[key] - 1
+                    }
+                    obj[key] = obj[key]+0.1;
+                    console.log(obj[key])
+                    if(obj[key] >= 1){
+                        clearInterval(timer);
+                    }
+                }
+            },100);
+        }
+        change({opacity:1})
+
+</script>
+</body>
+</html>
