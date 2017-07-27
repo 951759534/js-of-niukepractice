@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    (function(){
+        var storage = {
+            setValue:function(key,value,expireDate){
+                var obj = {};
+                obj.expiresDate = expireDate;
+                obj[key] = value;
+                if(date){
+                    localStorage.setItem(key,value)
+                }
+            },
+            getValue:function(key){
+                var date = localStorage.getItem(key).expiresDate;
+                var now = new Date();
+                if(now > date){
+                    localStorage.removeItem(key);
+                    return "数据已过期"
+                }else{
+                    return localStorage.getItem(key)[key]
+                }
+            }
+        }
+    })()
+</script>
+</body>
+</html>
