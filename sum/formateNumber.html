@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    (function(){
+        function formateNumber(number){
+            number = number.toString();
+            var flag = 0;
+            var index = number.indexOf(".");
+            var floatNumber;
+            if(index !== -1){
+                number = number.split(".");
+                number = number[0].split("");
+                floatNumber = number[1];
+            }else{
+                number=number.split("");
+            }
+            for(var i = number.length;i>=0;i--){
+                flag++;
+                if(flag % 3 === 0){
+                    number.splice(i - 1,0,",");
+                    i--;
+                }
+            }
+            number = number.join("");
+            if(floatNumber){
+                number = number + floatNumber;
+            }
+            return number
+        }
+        formateNumber(2000)
+    })()
+</script>
+</body>
+</html>
