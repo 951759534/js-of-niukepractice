@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function objectFormate(obj){
+        var newArr = [];
+        for(var key in obj){
+            var newObj = {
+            }
+            if(typeof obj[key] === 'object'){
+                newObj[key] = objectFormate(obj[key]);
+            }else{
+                newObj[key] = obj[key];
+            }
+            newArr.push(newObj)
+        }
+        return newArr
+    }
+    console.log(
+        objectFormate({
+            a:{
+                b:{
+                    c:{
+                        d:1
+                    }
+                },e:{
+                    f:{
+                        g:2
+                    }
+                },k:{
+                    n:{
+                        m:3
+                    }
+                }
+            },
+            j:1
+        })
+    );
+</script>
+</body>
+</html>
