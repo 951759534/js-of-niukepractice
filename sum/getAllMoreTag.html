@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>1</div>
+<div></div>
+<span></span>
+<script>
+    /*
+    * 找出页面中最多的标签
+    * 假定标签最多的只有一个
+    * */
+    var allTags = document.all;
+    var more = {num:1};
+    var obj = {};
+    for(var i = 0;i<allTags.length;i++){
+      if(!obj[allTags[i].tagName]){
+          obj[allTags[i].tagName] = 1;
+      }else{
+          obj[allTags[i].tagName]++;
+      }
+      if(obj[allTags[i].tagName] > more.num){
+          more.num = obj[allTags[i].tagName];
+          more.tag = allTags[i].tagName;
+      }
+    }
+    console.log(more.tag.toLowerCase());
+</script>
+</body>
+</html>
