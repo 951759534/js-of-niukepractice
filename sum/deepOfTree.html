@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ol>
+    <li>
+        <ol>
+            <li></li>
+        </ol>
+    </li>
+</ol>
+<ol>
+    <li></li>
+</ol>
+<script>
+    (function(){
+    var aOl = document.querySelectorAll("ol");
+    var deepLength = 1;
+    for(var i = 0;i<aOl.length;i++){
+        var aO = aOl[i].querySelectorAll("ol");
+        var newLength = aO.length + 1;
+        if(newLength > deepLength){
+            deepLength = newLength;
+        }
+    }
+    console.log(deepLength);
+})()
+</script>
+</body>
+</html>
