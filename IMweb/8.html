@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function onlyOnce(func){
+        var flag = true;
+        return function(data){
+            if(flag){
+                flag = false;
+                func(data)
+            }
+        }
+    }
+    var newFunc = onlyOnce(alert);
+    newFunc("aa")
+    newFunc("aa")
+</script>
+</body>
+</html>

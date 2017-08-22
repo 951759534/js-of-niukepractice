@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function doRepeat(func, times, wait) {
+        return function(data){
+            func(data);
+            var i = 0;
+            var timer =  setInterval(function(){
+                func(data);
+                if(i === times-2){
+                    clearInterval(timer)
+                }
+                i++;
+            },wait);
+        }
+    }
+    var aa = doRepeat(console.log,10,500)
+    aa("b")
+</script>
+</body>
+</html>
