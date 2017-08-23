@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+
+</div>
+<script>
+    /*
+    *
+    * function foo(n) {
+    }
+    const bar = foo(5);
+    bar();
+    使得当函数 bar 执行的时候：
+    在 container 中动态创建 5 个按钮，使得每个按钮的显示内容分别为 1 到 5 的整数，点击每个按钮的时候，在控制台输出 n 的值，n 为该按钮的显示内容。
+    在 container 中创建显示内容为 all 的按钮，使得点击按钮时，按照从 1 到 5 的顺序逐条执行如下任务：延时 n 秒之后在控制台输出 n 的值。
+    延时 1 秒，输出 1
+        ...
+        延时 5 秒，输出 5
+    要求：在 foo 方法体内，不得出现数字 5；不能引入第三方库，需要使用原生 JavaScript 操作 DOM 实现。
+    *
+    * */
+    function foo(n){
+        return function(){
+            if(n>0){
+                var str = "";
+                for(var i = 0;i < n ; i++){
+                     str += "<button>" + (i+1) + "</button>";
+                }
+                str += "<button>all</button>"
+            }
+            var obj = document.querySelector(".container");
+            obj.innerHTML = str;
+            obj.onclick = function(e){
+                if(e.target.innerHTML != "all"){
+                    console.log(e.target.innerHTML)
+                }else{
+                    var count = n;
+                    (function aa(count){
+                        if(count === 0){
+                            return;
+                        }else{
+                            console.log("开始")
+                            var delay = count*1000;
+                            setTimeout(function(){
+                                console.log(count);
+                                aa(--count);
+                            },delay)
+                        }
+                    })(count)
+                }
+            }
+        }
+    }
+    const bar = foo(5);
+    bar();
+</script>
+</body>
+</html>
